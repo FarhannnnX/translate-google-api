@@ -11,15 +11,13 @@ app.get("/tr", async function(req, res) {
   translate(text, { from: 'id', to: 'de'}).then(response => {
     const getLearn = response.raw[1][0][0][5][0][4];
     const arr = new Array();
-    let stats;
     for(let i = 0; i < getLearn.length; i++) {
       arr.push(getLearn[i][0]);
     }
     if (response.from.text.value !== "") {
-      stats = '<hr>input kata: <i>'+ text +'</i><br>Artinya: <b>'+ response.text +'</b><br><br>Ada typo tuh harusnya tuh: <br>[ '+ (response.from.text.value).split('[')[1].split(']')[0] +' ] <br><hr><b><i>Makanya Kalo waktunya belajar yang fokus yaaa😒😒😒</i></b><hr>';
       res.json({
         status: true,
-        result: stats
+        result: '<hr>input kata: <i>'+ text +'</i><br>Artinya: <b>'+ response.text +'</b><br><br>Ada typo tuh harusnya tuh: <br>[ '+ (response.from.text.value).split('[')[1].split(']')[0] +' ] <br><hr><b><i>Makanya Kalo waktunya belajar yang fokus yaaa😒😒😒</i></b><hr>'
       })
     } else {
       res.json({
