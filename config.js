@@ -1,4 +1,6 @@
-const status = document.querySelector('.response'); 
+const status = document.querySelector('.response');
+const language = document.getElementById('country');
+
 var input = document.getElementById("input"); 
 input.addEventListener("keyup", function (event) {
   if (event.key == 'Enter') { 
@@ -9,10 +11,11 @@ input.addEventListener("keyup", function (event) {
 
 function execute() {
   if (input.value == '') {
-    status.innerHTML = 'loh ayanggg kenapa inputnya kosongg??😒😒';
+    swal("Info masseh", "Jangan dikosongin dong inputnya😒😒", "error");
   } else {
-    $.getJSON(document.location.href +'tr?text='+ input.value, function(data) {
-      if (data.status) {
+    $.getJSON(document.location.href +'tr?to='+ country.value +'&text='+ input.value, function(data) {
+      if (data.status == true) {
+        swal("info masseh", "sukses translate ya ayang🤭🤭", "success");
         status.innerHTML = data.result;
       } else {
         status.innerHTML = 'Ihh ayang maaf ya error😔😔';
