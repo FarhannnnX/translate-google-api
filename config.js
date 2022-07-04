@@ -18,7 +18,7 @@ function execute() {
         swal("info masseh", "sukses translate ya ayang🤭🤭", "success");
         status.innerHTML = data.result;
       } else {
-        status.innerHTML = 'Ihh ayang maaf ya error😔😔';
+        swal('','Ihh ayang maaf ya error😔😔', 'error');
       }
     });
   }
