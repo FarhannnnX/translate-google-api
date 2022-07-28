@@ -42,7 +42,7 @@ app.get("/tr", async function(req, res) {
     } else {
       res.json({
         status: true,
-        result: '<hr>input kata: <i>'+ text +'</i><br>Artinya: <b>'+ response.text +'</b><br><br>Pengucapan Lainnya:<br>==========<br>'+ arr.join('<br>') +'<br>==========<hr>'
+        result: '<hr>input: <b>'+ text +'</b><br>Result: <b>'+ response.text +'</b><br><br>Result Others:<br>==========<br>'+ arr.join('<br>') +'<br>==========<hr>'
       })
     }
   }).catch(e => {
