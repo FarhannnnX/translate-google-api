@@ -1,3 +1,5 @@
+const path = process.cwd();
+
 //External modules
 const express = require('express');
 const moment = require('moment-timezone');
@@ -5,7 +7,7 @@ const translate = require('@vitalets/google-translate-api');
 const expressLayout = require('express-ejs-layouts');
 
 // import language
-const langs = require(process.cwd() +'/language');
+const langs = require(path +'/language');
 
 // set up app express
 const app = express();
@@ -22,10 +24,11 @@ app.get("/", function(req, res) {
     ucapan: moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a').charAt(0).toUpperCase() + moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a').slice(1),
     language: langs,
     layout: "layouts/main"
-  })
+  });
 });
 app.get("/tr", async function(req, res) {
   const { text, to } = req.query;
+  if (!text || !to) return res.send('bakaaaa >//<');
   translate(text, { to }).then(response => {
     const getLearn = response.raw[1][0][0][5][0][4];
     const arr = new Array();
@@ -35,25 +38,22 @@ app.get("/tr", async function(req, res) {
     }
     if (response.from.text.value !== "") {
       stats = '<hr>input kata: <i>'+ text +'</i><br>Artinya: <b>'+ response.text +'</b><br><br>Ada typo tuh harusnya tuh: <br>[ '+ (response.from.text.value).split('[')[1].split(']')[0] +' ] <br><hr><b><i>Makanya Kalo waktunya belajar yang fokus yaaa😒😒😒</i></b><hr>';
-      res.json({
-        status: true,
-        result: stats
-      })
     } else {
-      res.json({
-        status: true,
-        result: '<hr>input: <b>'+ text +'</b><br>Result: <b>'+ response.text +'</b><br><br>Result Others:<br>==========<br>'+ arr.join('<br>') +'<br>==========<hr>'
-      })
+      stats = '<hr>input: <b>'+ text +'</b><br>Result: <b>'+ response.text +'</b><br><br>Result Others:<br>==========<br>'+ arr.join('<br>') +'<br>==========<hr>';
     }
+    res.json({
+      status: true,
+      result: stats
+    });
   }).catch(e => {
     console.error(e);
     res.json({
       status: false,
       msg: e
-    })
-  })
-})
+    });
+  });
+});
 
 app.listen(process.env.PORT || 8080, function() {
   console.log('connected');
-})
+});
