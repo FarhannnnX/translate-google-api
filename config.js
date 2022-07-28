@@ -11,11 +11,11 @@ input.addEventListener("keyup", function (event) {
 
 function execute() {
   if (input.value == '') {
-    swal("Info masseh", "Jangan dikosongin dong inputnya😒😒", "error");
+    swal("Info kak", "Jangan dikosongin dong inputnya😒😒", "error");
   } else {
     $.getJSON(document.location.href +'tr?to='+ country.value +'&text='+ input.value, function(data) {
       if (data.status == true) {
-        swal("info masseh", "sukses translate ya ayang🤭🤭", "success");
+        swal("info kak", "sukses translate nih🤙", "success");
         status.innerHTML = data.result;
       } else {
         swal('','Ihh ayang maaf ya error😔😔', 'error');
