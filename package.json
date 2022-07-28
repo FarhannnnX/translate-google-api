@@ -1,7 +1,7 @@
 {
-  "name": "translate-ayang",
-  "version": "1.0.0",
-  "description": "translate khusus ayang:v, buat hiburan doang",
+  "name": "translate-google-api",
+  "version": "1.0.1",
+  "description": "make module translate google api",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
