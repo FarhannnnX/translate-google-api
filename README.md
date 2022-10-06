@@ -9,7 +9,7 @@
 
 - 🌱 I’m currently learning **Nodejs**
 
-- 🌍 Rest API [https://api-xcoders.xyz](https://api-xcoders.xyz)
+- 🌍 Rest API [https://api-xcoders.site](https://api-xcoders.site)
 
 - 📫 How to reach me **farhanxcode7@gmail.com**
 
